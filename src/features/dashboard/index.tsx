@@ -6,10 +6,14 @@ import { CommonCard } from "@/components/cards/common-card";
 import { CommonButton } from "@/components/buttons/common-button";
 import { ActivityTracker } from "./user-dashboard/activity-tracker";
 import { HeatMap } from "./user-dashboard/heat-map";
+import { SwitchField } from "@/components/input-fields/switch-field";
 
 export const DashboardFeature = () => {
   return (
     <>
+      <Box>
+        <SwitchField />
+      </Box>
       <ContainerGridLayout>
         <ItemGridLayout lg={6}>
           <Box sx={{ height: "100%" }}>

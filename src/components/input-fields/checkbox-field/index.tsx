@@ -23,8 +23,10 @@ export const CheckboxField = (props: CheckboxFieldPropsI) => {
           onChange={onChange}
           id={id}
           disabled={disabled}
-          inputProps={{
-            "aria-label": ariaLabel,
+          slotProps={{
+            input: {
+              "aria-label": ariaLabel,
+            },
           }}
         />
       }
