@@ -53,7 +53,6 @@ const SingleAutocompleteAsyncFormField = (props: any) => {
               onChanged(e, newValue, field?.onChange);
             }}
             onBlur={field?.onBlur}
-            options={options ?? []}
             onOpen={() => {
               setOpen(true);
               trigger({ params: { ...externalParams } });
@@ -61,6 +60,11 @@ const SingleAutocompleteAsyncFormField = (props: any) => {
             onClose={() => {
               setOpen(false);
             }}
+            onInputChange={(event: any, newInputValue: any) => {
+              triggerDebounce(newInputValue);
+            }}
+            options={isLoading || isFetching ? [] : (data ?? [])}
+            loading={isLoading || isFetching}
             noOptionsText={noOptionsText}
             groupBy={groupBy}
             freeSolo={freeSolo}
