@@ -32,3 +32,37 @@ export const DashboardFeature = () => {
     </>
   );
 };
+
+export const AdminDashboardFeature = () => {
+  return (
+    <>
+      <Box>
+        <ActivityTracker />
+      </Box>
+      <ContainerGridLayout>
+        <ItemGridLayout lg={6}>
+          <Box sx={{ height: "100%" }}>
+            <HeatMap />
+          </Box>
+        </ItemGridLayout>
+        <ItemGridLayout lg={6}>
+          <Box sx={{ height: "100%" }}>
+            <ActivityTracker />
+          </Box>
+        </ItemGridLayout>
+      </ContainerGridLayout>
+      <ContainerGridLayout>
+        <ItemGridLayout lg={6}>
+          <Box sx={{ height: "100%" }}>
+            <HeatMap />
+          </Box>
+        </ItemGridLayout>
+        <ItemGridLayout lg={6}>
+          <Box sx={{ height: "100%" }}>
+            <ActivityTracker />
+          </Box>
+        </ItemGridLayout>
+      </ContainerGridLayout>
+    </>
+  );
+};
