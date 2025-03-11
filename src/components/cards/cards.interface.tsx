@@ -2,6 +2,8 @@ export interface ItemAvatarCountCardPropsI {
   name: string;
   avatarSrc: any;
   count: number;
+  hasCount?: boolean;
+  isStatic?: boolean;
 }
 
 export interface ActivityInfoCardPropsI {
@@ -18,4 +20,5 @@ export interface ActivityCardPropsI {
   dateFormat?: string;
   hasBorderBottom?: boolean;
   paddingX?: number;
+  isActive?: boolean;
 }

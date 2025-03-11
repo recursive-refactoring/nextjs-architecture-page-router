@@ -48,3 +48,29 @@ const formatTimeUnit = (diff: number, unit: string, base: number = 1) => {
   const value = Math?.floor(diff / base);
   return `${value} ${unit}${value !== 1 ? "s" : ""} ago`;
 };
+
+export const formatRelativeDate = (isoDateString?: string | Date) => {
+  const now = dayjs();
+  const date = dayjs(isoDateString);
+  const diffMinutes = now?.diff(date, "minute");
+
+  const formattedTime = date?.format("hh:mm a");
+
+  if (now?.isSame(date, "day")) {
+    return `TODAY | ${formattedTime}`;
+  }
+
+  if (now?.subtract(1, "day")?.isSame(date, "day")) {
+    return `YESTERDAY | ${formattedTime}`;
+  }
+
+  if (diffMinutes < MINUTES_IN_MONTH) {
+    return `${date?.format("MMMM D")} | ${formattedTime}`;
+  }
+
+  if (diffMinutes < MINUTES_IN_YEAR) {
+    return `${date?.format("MMMM YYYY")} | ${formattedTime}`;
+  }
+
+  return `${date?.format("YYYY")} | ${formattedTime}`;
+};

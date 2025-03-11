@@ -2,36 +2,39 @@ import { Box } from "@mui/material";
 import { ActivityCardPropsI } from "../cards.interface";
 import { LogInfo } from "@/components/data-displays/log-info";
 import { BodyText } from "@/components/text/body-text";
-import { formatDateTime } from "@/libs/date-time";
+import { formatRelativeDate } from "@/libs/date-time";
 
 export const ActivityCard = (props: ActivityCardPropsI) => {
   const {
     activityType,
     activityInfo,
     activityDate,
-    dateFormat,
     hasBorderBottom,
-    paddingX = 2,
+    paddingX = 1.5,
+    isActive = false,
   } = props;
 
   return (
     <Box
       sx={{
-        backgroundColor: "common.white",
+        backgroundColor: isActive ? "primary.light" : "common.white",
         borderBottom: hasBorderBottom ? "1px solid" : "",
         paddingX,
         py: 1.5,
+        marginY: 1,
+        borderRadius: 2,
       }}
     >
-      <LogInfo logType={activityType?.toLowerCase()} log={activityInfo} />
       <BodyText
-        marginTop={0.5}
-        color={"grey.600"}
+        marginBottom={0.5}
+        color={"text.secondary"}
         component={"p"}
-        variant="body2"
+        variant="caption"
+        fontWeight="fontWeightBold"
       >
-        {formatDateTime(activityDate, dateFormat)}
+        {formatRelativeDate(activityDate)}
       </BodyText>
+      <LogInfo logType={activityType?.toLowerCase()} log={activityInfo} />
     </Box>
   );
 };
